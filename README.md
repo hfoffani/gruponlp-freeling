@@ -14,4 +14,19 @@ docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/con
 
 
 
+pip install git+https://github.com/dpallot/simple-websocket-server.git
+o usar sudo pip install ...etc..
+
+
+https://github.com/proycon/pynlpl
+
+
+Pendientes
+---------
+seguridad
+utf-8
+formato salida
+licencias
+
+
 
