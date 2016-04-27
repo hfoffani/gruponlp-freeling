@@ -104,12 +104,34 @@ class FreeLingClient(object):
 
 
 
+from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
+flcli = None
+
+class SimpleFreeLing(WebSocket):
+
+    def handleMessage(self):
+        print(self.data)
+        # echo message back to client
+        # self.sendMessage(self.data)
+
+    def handleConnected(self):
+        print(self.address, 'connected')
+
+    def handleClose(self):
+        print(self.address, 'closed')
+
+
+import sys
 
 if __name__ == "__main__":
-    s = 'Estaba la Catalina sentada bajo un laurel.'
-    print( s )
     flcli = FreeLingClient('192.168.1.226', 50005)
-    res = flcli.process(s)
-    print( res )
+    if len(sys.argv) > 1 and sys.argv[1] == '--server':
+        server = SimpleWebSocketServer('', 8008, SimpleFreeLing)
+        server.serveforever()
+    else:
+        s = 'Estaba la Catalina sentada bajo un laurel.'
+        print( s )
+        res = flcli.process(s)
+        print( res )
 
