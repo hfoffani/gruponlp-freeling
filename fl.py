@@ -108,8 +108,8 @@ class FreeLingClient(object):
 
 if __name__ == "__main__":
     s = 'Estaba la Catalina sentada bajo un laurel.'
-    print s
+    print( s )
     flcli = FreeLingClient('192.168.1.226', 50005)
     res = flcli.process(s)
-    print res
+    print( res )
 
