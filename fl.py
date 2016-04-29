@@ -24,24 +24,20 @@ from __future__ import absolute_import
 import socket
 import sys
 
-def u(s, enc):
-    return s
 
 class FreeLingClient(object):
-    def __init__(self, host, port, encoding='utf-8', timeout=120.0):
+    def __init__(self, host, port, timeout=120.0):
         """Initialise the client, set channel to the path and filename where the server's .in and .out pipes are (without extension)"""
-        self.encoding = encoding
+        self.encoding = 'utf-8'
         self.BUFSIZE = 10240
         self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         self.socket.settimeout(timeout)
         self.socket.connect( (host,int(port)) )
-        self.encoding = encoding
         self.socket.sendall('RESET_STATS\0')
         r = self.socket.recv(self.BUFSIZE)
         if not r.strip('\0') == 'FL-SERVER-READY':
             raise Exception("Server not ready")
 
-        
     def process(self, sourcewords, debug=False):
         """Process a list of words, passing it to the server and realigning the output with the original words"""
 
@@ -61,9 +57,7 @@ class FreeLingClient(object):
                     break
                 else:
                     data += buffer
-
             
-            data = u(data,self.encoding)
             if debug: print("Received:",data,file=sys.stderr) 
             if not data == 'FL_SERVER_READY':
                 results.append(data)
@@ -83,10 +77,10 @@ class SimpleFreeLing(WebSocket):
     def handleMessage(self):
         if trace: print(self.address, 'analyze:', self.data)
         try:
-            resp = unicode(flcli.process(self.data, debug=trace))
+            resp = unicode(flcli.process(self.data, debug=False))
             self.sendMessage(resp)
         except Exception as e:
-            print(e)
+            print(e, file=sys.stderr)
 
     def handleConnected(self):
         if trace: print(self.address, 'connected')
@@ -95,7 +89,6 @@ class SimpleFreeLing(WebSocket):
         if trace: print(self.address, 'closed')
 
 
-import sys
 
 if __name__ == "__main__":
     flcli = FreeLingClient('192.168.1.226', 50005)

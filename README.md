@@ -21,8 +21,6 @@ Websockets
 pip install git+https://github.com/dpallot/simple-websocket-server.git
 o usar sudo pip install ...etc..
 
-test: python echosrv.py
-
 
 
 Demo Websockets
