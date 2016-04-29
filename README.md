@@ -65,10 +65,13 @@ solo localhost en servidor
 
 Mas Pendientes
 ---------
-seguridad
-utf-8
-formato salida
-licencias
 
+seguridad
+escalabilidad
+utf-8
+licencias
+reducir tamaño:
+    quitar idiomas
+    ¿instalar via .deb?
 
 
