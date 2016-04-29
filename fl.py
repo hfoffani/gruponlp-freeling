@@ -1,20 +1,3 @@
-##############################################################
-#  PyNLPl - FreeLing Library
-#       by Maarten van Gompel (proycon)
-#       http://ilk.uvt.nl/~mvgompel
-#       Radboud University Nijmegen
-#       
-#       Licensed under GPLv3
-# 
-# This is a Python library for on-the-fly communication with
-# a FreeLing server. Allowing on-the-fly lemmatisation and
-# PoS-tagging. It is recommended to pass your data on a 
-# sentence-by-sentence basis to FreeLingClient.process()
-#
-# Make sure to start Freeling (analyzer)  with the --server 
-# and --flush flags !!!!!
-#
-###############################################################
 
 from __future__ import print_function
 from __future__ import unicode_literals
@@ -24,7 +7,12 @@ from __future__ import absolute_import
 import socket
 import sys
 
+from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
+
+#  PyNLPl - FreeLing Library
+#       by Maarten van Gompel (proycon)
+# de pynlpl.github.com
 class FreeLingClient(object):
     def __init__(self, host, port, timeout=120.0):
         """Initialise the client, set channel to the path and filename where the server's .in and .out pipes are (without extension)"""
@@ -66,8 +54,6 @@ class FreeLingClient(object):
         return ''.join(results)
 
 
-
-from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
 flcli = None
 trace = True
