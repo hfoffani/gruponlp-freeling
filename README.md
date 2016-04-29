@@ -32,7 +32,7 @@ levantar el linux.
 anotar la ip.
     /sbin/ifconfig
 levantar el FL deamon:
-    analyze -f es.cfg --server --port 50005 -
+    analyze -f es.cfg --server --port 50005 --output json --flush &
 anotar el pid para matarlo via:
     analyze stop nnn
 
