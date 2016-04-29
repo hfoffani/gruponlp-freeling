@@ -46,7 +46,24 @@ FreeLang client en Python
 https://github.com/proycon/pynlpl
 
 
+
 Pendientes
+---------
+
+instalacion en servidor:
+    pip install websocket..etc..
+    git clone foffani
+    sh de start
+    rc de start
+    sh de stop
+    rc de stop
+
+configuracion websocket
+solo localhost en servidor
+
+
+
+Mas Pendientes
 ---------
 seguridad
 utf-8
