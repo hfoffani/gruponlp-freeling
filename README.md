@@ -21,7 +21,24 @@ Websockets
 pip install git+https://github.com/dpallot/simple-websocket-server.git
 o usar sudo pip install ...etc..
 
-python echosrv.py
+test: python echosrv.py
+
+
+
+Demo Websockets
+---------------
+
+levantar el linux.
+anotar la ip.
+    /sbin/ifconfig
+levantar el FL deamon:
+    analyze -f es.cfg --server --port 50005 -
+anotar el pid para matarlo via:
+    analyze stop nnn
+
+levantar el websocket server
+    python fl.py --server
+
 
 
 

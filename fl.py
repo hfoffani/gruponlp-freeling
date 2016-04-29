@@ -111,9 +111,12 @@ flcli = None
 class SimpleFreeLing(WebSocket):
 
     def handleMessage(self):
-        print(self.data)
-        # echo message back to client
-        # self.sendMessage(self.data)
+        print(self.address, 'analyze:', self.data)
+        try:
+            resp = unicode(flcli.process(self.data))
+            self.sendMessage(resp)
+        except Exception as e:
+            print(e)
 
     def handleConnected(self):
         print(self.address, 'connected')
@@ -130,7 +133,7 @@ if __name__ == "__main__":
         server = SimpleWebSocketServer('', 8008, SimpleFreeLing)
         server.serveforever()
     else:
-        s = 'Estaba la Catalina sentada bajo un laurel.'
+        s = 'La casa es bonita.'
         print( s )
         res = flcli.process(s)
         print( res )
