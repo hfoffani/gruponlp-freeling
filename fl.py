@@ -45,14 +45,8 @@ class FreeLingClient(object):
     def process(self, sourcewords, debug=False):
         """Process a list of words, passing it to the server and realigning the output with the original words"""
 
-        if isinstance( sourcewords, list ) or isinstance( sourcewords, tuple ):
-            sourcewords_s = " ".join(sourcewords)            
-        else:
-            sourcewords_s = sourcewords
-            sourcewords = sourcewords.split(' ')
-        
-        self.socket.sendall(sourcewords_s.encode(self.encoding) +'\n\0')
-        if debug: print("Sent:",sourcewords_s.encode(self.encoding),file=sys.stderr)
+        self.socket.sendall(sourcewords.encode(self.encoding) +'\n\0')
+        if debug: print("Sent:",sourcewords.encode(self.encoding),file=sys.stderr)
         
         results = []
         done = False
@@ -71,58 +65,34 @@ class FreeLingClient(object):
             
             data = u(data,self.encoding)
             if debug: print("Received:",data,file=sys.stderr) 
+            if not data == 'FL_SERVER_READY':
+                results.append(data)
+                done = True
 
-            for i, line in enumerate(data.strip(' \t\0\r\n').split('\n')):
-                if not line.strip():
-                    done = True
-                    break
-                else:
-                    cols = line.split(" ")
-                    subwords = cols[0].lower().split("_")
-                    if len(cols) > 2: #this seems a bit odd?
-                        for word in subwords: #split multiword expressions
-                            results.append( (word, cols[1], cols[2], i, len(subwords) > 1 ) ) #word, lemma, pos, index, multiword?
-
-        sourcewords = [ w.lower() for w in sourcewords ]          
-
-        alignment = []
-        for i, sourceword in enumerate(sourcewords):
-            found = False
-            best = 0  
-            distance = 999999          
-            for j, (targetword, lemma, pos, index, multiword) in enumerate(results):
-                if sourceword == targetword and abs(i-j) < distance:
-                    found = True
-                    best = j
-                    distance = abs(i-j)
-
-            if found:
-                alignment.append(results[best])
-            else:                
-                alignment.append((None,None,None,None,False)) #no alignment found
-        return alignment
+        return ''.join(results)
 
 
 
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
 flcli = None
+trace = True
 
 class SimpleFreeLing(WebSocket):
 
     def handleMessage(self):
-        print(self.address, 'analyze:', self.data)
+        if trace: print(self.address, 'analyze:', self.data)
         try:
-            resp = unicode(flcli.process(self.data))
+            resp = unicode(flcli.process(self.data, debug=trace))
             self.sendMessage(resp)
         except Exception as e:
             print(e)
 
     def handleConnected(self):
-        print(self.address, 'connected')
+        if trace: print(self.address, 'connected')
 
     def handleClose(self):
-        print(self.address, 'closed')
+        if trace: print(self.address, 'closed')
 
 
 import sys
