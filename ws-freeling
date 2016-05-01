@@ -1,0 +1,42 @@
+#!/bin/sh
+# /etc/init.d/ws-freeling
+
+set -e
+
+PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/local/bin
+
+. /lib/lsb/init-functions
+if [ -f /etc/defaults/rcS ]; then
+    . /etc/defaults/rcS
+fi
+
+case "$1" in
+  start)
+    analyze -f es.cfg --server --port 50005 --output json --flush &
+    # wait for freeling
+    sleep 60
+    # start webscoket
+    python fl.py --server &
+
+  ;;
+
+  restart|reload|force-reload)
+    /etc/init.d/x11-common start
+  ;;
+
+  stop)
+   :
+  ;;
+
+  status)
+    do_status
+  ;;
+  *)
+    log_success_msg "Usage: /etc/init.d/ws-freeling {start|stop|status|restart|reload|force-reload}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
+# vim:set ai et sts=2 sw=2 tw=0:
