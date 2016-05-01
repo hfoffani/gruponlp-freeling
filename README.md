@@ -22,8 +22,12 @@ docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/con
 Websockets
 ----------
 
+sudo apt-get install python-pip
+
 pip install git+https://github.com/dpallot/simple-websocket-server.git
-o usar sudo pip install ...etc..
+or
+sudo pip install git+https://github.com/dpallot/simple-websocket-server/zipball/master
+
 
 
 
@@ -51,15 +55,7 @@ https://github.com/proycon/pynlpl
 Pendientes
 ---------
 
-instalacion en servidor:
-    pip install websocket..etc..
-    git clone foffani
-    sh de start
-    rc de start
-    sh de stop
-    rc de stop
-
-configuracion websocket
+script de apagado
 solo localhost en servidor
     no se puede. el FL escucha en todos las IPs.
 
