@@ -1,1 +1,1 @@
-zip -D releases/flserver.zip README.md fl.py install-freeling.sh startfl.sh
+tar cvzf releases/flserver.tgz README.md fl.py install-freeling.sh startfl.sh
