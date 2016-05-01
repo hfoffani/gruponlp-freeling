@@ -1,6 +1,6 @@
 
 # start FL
-analyzer -f es.cfg --server --port 50005 &
+analyze -f es.cfg --server --port 50005 --output json --flush &
 
 # wait for freeling
 sleep 60

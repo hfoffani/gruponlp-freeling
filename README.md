@@ -31,16 +31,13 @@ Demo Websockets
 ---------------
 
 levantar el linux.
-anotar la ip.
-    /sbin/ifconfig
-levantar el FL deamon:
-    analyze -f es.cfg --server --port 50005 --output json --flush &
+levantar los servidores:
+    startfl.sh
+
 anotar el pid para matarlo via:
     analyze stop nnn
 
-levantar el websocket server
-    python fl.py --server
-
+https://github.com/hfoffani/gruponlp-freeling/releases/download/v0.1/flserver.zip
 
 
 

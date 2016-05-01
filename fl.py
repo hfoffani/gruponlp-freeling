@@ -77,7 +77,7 @@ class SimpleFreeLing(WebSocket):
 
 
 if __name__ == "__main__":
-    flcli = FreeLingClient('192.168.1.226', 50005)
+    flcli = FreeLingClient('localhost', 50005)
     if len(sys.argv) > 1 and sys.argv[1] == '--server':
         server = SimpleWebSocketServer('', 8008, SimpleFreeLing)
         server.serveforever()
