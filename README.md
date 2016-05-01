@@ -1,7 +1,11 @@
 
+Uno de Docker
+-------------
 docker pull malev/freeling
 
 export FREELINGSHARE=/usr/local/share/freeling
+
+no funciona como quiero.
 
 
 Archivo de Configuracion
@@ -60,6 +64,7 @@ instalacion en servidor:
 
 configuracion websocket
 solo localhost en servidor
+    no se puede. el FL escucha en todos las IPs.
 
 
 
