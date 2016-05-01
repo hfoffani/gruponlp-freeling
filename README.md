@@ -28,6 +28,10 @@ pip install git+https://github.com/dpallot/simple-websocket-server.git
 or
 sudo pip install git+https://github.com/dpallot/simple-websocket-server/zipball/master
 
+sudo cp fl.py /usr/local/lib
+sudo cp ws-freeling /etc/init.d
+sudo chmod +x /etc/init.d
+sudo update-rc.d ws-freeling defaults
 
 
 

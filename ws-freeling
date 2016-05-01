@@ -16,7 +16,7 @@ case "$1" in
     # wait for freeling
     sleep 60
     # start webscoket
-    python fl.py --server &
+    python /usr/local/lib/fl.py --server &
 
   ;;
 
