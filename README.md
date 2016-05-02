@@ -19,33 +19,22 @@ docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/con
 
 
 
+Server
+------
+
+wget https://github.com/hfoffani/gruponlp-freeling/releases/download/v0.1/flserver.tgz
+tar xvf flserver.tgz
+
+
+Freeling
+--------
+
+install-freeling.sh
+
 Websockets
 ----------
 
-sudo apt-get install python-pip
-
-pip install git+https://github.com/dpallot/simple-websocket-server.git
-or
-sudo pip install git+https://github.com/dpallot/simple-websocket-server/zipball/master
-
-sudo cp fl.py /usr/local/lib
-sudo cp ws-freeling /etc/init.d
-sudo chmod +x /etc/init.d
-sudo update-rc.d ws-freeling defaults
-
-
-
-Demo Websockets
----------------
-
-levantar el linux.
-levantar los servidores:
-    startfl.sh
-
-anotar el pid para matarlo via:
-    analyze stop nnn
-
-https://github.com/hfoffani/gruponlp-freeling/releases/download/v0.1/flserver.zip
+install-wsfreeling.sh
 
 
 
