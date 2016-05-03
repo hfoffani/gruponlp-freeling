@@ -22,11 +22,12 @@ case "$1" in
   ;;
 
   restart|reload|force-reload)
-    /etc/init.d/x11-common start
+    /etc/init.d/ws-freeling start
   ;;
 
   stop)
-   :
+
+    kill `ps ax|egrep "analyze|fl.py"|grep -v grep|awk '{print $1}'`
   ;;
 
   status)
