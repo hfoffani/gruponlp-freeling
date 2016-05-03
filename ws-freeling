@@ -17,7 +17,7 @@ case "$1" in
     # wait for freeling
     sleep 60
     # start webscoket
-    python /usr/local/lib/fl.py --server >/tmp/flserver.log 2&>1 &
+    python /usr/local/lib/fl.py --server >/tmp/flserver.log 2>&1 &
 
   ;;
 
