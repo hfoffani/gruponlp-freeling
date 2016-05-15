@@ -15,6 +15,8 @@ ln -s libtreeler-0.4.so libtreeler.so
 cd ../../../..
 
 cp -r /usr/local/share/freeling/* deb/usr/local/share/freeling/
+find deb/usr/local/share/freeling/ -type f | xargs chmod 644
+
 cp /usr/local/bin/* deb/usr/local/bin/
 
 mkdir deb/DEBIAN

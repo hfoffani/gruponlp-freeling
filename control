@@ -3,7 +3,7 @@ Version: 4.0-beta2
 Section: base
 Priority: optional
 Architecture: i386
-Depends: libboost-dev libboost-regex-dev libicu-dev libboost-system-dev libboost-program-options-dev libboost-thread-dev zlib1g-dev
+Depends: libboost-dev (>= 1.55.0.2), libboost-regex-dev (>= 1.55.0.2), libicu-dev, libboost-system-dev, libboost-program-options-dev, libboost-thread-dev, zlib1g-dev
 Maintainer: Herchu <hfoffani@gmail.com>
 Description: This is FreeLing 4.0 beta.
 
