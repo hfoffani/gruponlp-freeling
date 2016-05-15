@@ -9,6 +9,6 @@ cp /usr/local/bin/* deb/usr/local/bin/
 mkdir deb/DEBIAN
 find deb -type d | xargs chmod 755
 cp control deb/DEBIAN/
-dpkg-deb --build deb
+fakeroot dpkg-deb --build deb
 
 mv deb.deb freeling4.deb

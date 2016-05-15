@@ -76,6 +76,5 @@ Hacer un package en Debian:
 - sudo apt-get install lintian
 - sh mkdeb.sh
 - falta cambiar los cp por links -s
-
-
+- faltan las dependencias
 
