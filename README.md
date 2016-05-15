@@ -69,3 +69,13 @@ o también:
     export FREELINGSHARE=/usr/local/share/freeling
     docker run -it --rm -p 50005:50005 malev/freeling analyzer -f $FREELINGSHARE/config/en.cfg --server --port 50005 --inpf plain --outf morfo
 
+
+
+Hacer un package en Debian:
+
+- sudo apt-get install lintian
+- sh mkdeb.sh
+- falta cambiar los cp por links -s
+
+
+
