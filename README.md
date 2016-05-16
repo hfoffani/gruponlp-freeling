@@ -75,6 +75,11 @@ Hacer un package en Debian:
 
 - sudo apt-get install lintian
 - sh mkdeb.sh
-- faltan los strip
-- resto de errores del lintian
+- ignorar errores del lintian referidos a /usr/local
+
+Falta:
+
+¿Desde /usr/local/bin se pueden ejecutar los programas del docker?
+
+- arreglar resto de errores del lintian
 
