@@ -14,3 +14,9 @@ dpkg: dependency problems prevent configuration of freeling:
  freeling depends on libboost-filesystem1.55.0 (>= 1.55); however:
    Package is not installed.
 
+
+ldd /usr/bin/analyzer
+    linux-vdso.so.1 ... etc...
+    libfreeling-4.0.so => ... etc...
+    libboost_system.so.1.54.0 => not found
+
