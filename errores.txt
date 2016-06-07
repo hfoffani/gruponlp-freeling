@@ -1,0 +1,16 @@
+
+https://github.com/TALP-UPC/FreeLing/releases/download/4.0/freeling-4.0-trusty-amd64.deb
+
+
+sudo apt-get install libboost-regex-dev libicu-dev zlib1g-dev
+sudo apt-get install libboost-system-dev libboost-program-options-dev libboost-thread-dev
+
+
+sudo dpkg -i freeling-4.0.deb
+
+
+
+dpkg: dependency problems prevent configuration of freeling:
+ freeling depends on libboost-filesystem1.55.0 (>= 1.55); however:
+   Package is not installed.
+
